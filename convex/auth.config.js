@@ -1,7 +1,7 @@
 const authConfig = {
   providers: [
     {
-      domain: "https://amusing-quetzal-49.clerk.accounts.dev",
+      domain: process.env.CLERK_JWT_ISSUER_DOMAIN,
       applicationID: "convex",
     },
   ],
