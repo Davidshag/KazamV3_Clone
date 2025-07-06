@@ -15,6 +15,7 @@ export enum LayerType {
   Path,
   Text,
   Note,
+  CladoNote,
 }
 
 export type RectangleLayer = {
@@ -68,6 +69,16 @@ export type NoteLayer = {
   value?: string;
 };
 
+export type CladoNoteLayer = {
+  type: LayerType.CladoNote;
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+  fill: Color;
+  value?: string;
+};
+
 export type Point = {
   x: number;
   y: number;
@@ -89,37 +100,37 @@ export enum Side {
 
 export type CanvasState =
   | {
-      mode: CanvasMode.None;
-    }
+    mode: CanvasMode.None;
+  }
   | {
-      mode: CanvasMode.SelectionNet;
-      origin: Point;
-      current?: Point;
-    }
+    mode: CanvasMode.SelectionNet;
+    origin: Point;
+    current?: Point;
+  }
   | {
-      mode: CanvasMode.Translating;
-      current: Point;
-    }
+    mode: CanvasMode.Translating;
+    current: Point;
+  }
   | {
-      mode: CanvasMode.Inserting;
-      layerType:
-        | LayerType.Ellipse
-        | LayerType.Rectangle
-        | LayerType.Text
-        | LayerType.Note;
-    }
+    mode: CanvasMode.Inserting;
+    layerType:
+    | LayerType.Ellipse
+    | LayerType.Rectangle
+    | LayerType.Text
+    | LayerType.Note;
+  }
   | {
-      mode: CanvasMode.Pencil;
-    }
+    mode: CanvasMode.Pencil;
+  }
   | {
-      mode: CanvasMode.Pressing;
-      origin: Point;
-    }
+    mode: CanvasMode.Pressing;
+    origin: Point;
+  }
   | {
-      mode: CanvasMode.Resizing;
-      initialBounds: XYWH;
-      corner: Side;
-    };
+    mode: CanvasMode.Resizing;
+    initialBounds: XYWH;
+    corner: Side;
+  };
 
 export enum CanvasMode {
   None,
@@ -136,4 +147,5 @@ export type Layer =
   | EllipseLayer
   | PathLayer
   | TextLayer
-  | NoteLayer;
+  | NoteLayer
+  | CladoNoteLayer;
