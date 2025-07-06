@@ -8,6 +8,8 @@ export default defineSchema({
     authorId: v.string(),
     authorName: v.string(),
     imageUrl: v.string(),
+    flowNodes: v.optional(v.array(v.any())),
+    flowEdges: v.optional(v.array(v.any())),
   })
     .index("by_org", ["orgId"])
     .searchIndex("search_title", {
